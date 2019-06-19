@@ -1,5 +1,10 @@
 package com.miyanaqy.base.mapper;
 
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.binding.MapperMethod.ParamMap;
 import org.apache.ibatis.jdbc.SQL;
 import org.apache.logging.log4j.LogManager;
@@ -7,11 +12,6 @@ import org.apache.logging.log4j.Logger;
 
 import com.miyanaqy.base.annotation.Column;
 import com.miyanaqy.base.entity.BaseEntity;
-
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 /**
  * 数据访问层通用抽象类提供基本增＼删＼改＼查操作
  *
@@ -130,6 +130,7 @@ public class DaoTemplate<T extends BaseEntity> {
 		return result;
 	}
 
+	@SuppressWarnings("unused")
 	private String getResultFields(List<String> list) {
 		if (list.size() == 0)
 			return "*";

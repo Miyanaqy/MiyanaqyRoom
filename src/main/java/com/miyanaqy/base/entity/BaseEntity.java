@@ -1,6 +1,16 @@
 package com.miyanaqy.base.entity;
 
 
+import java.lang.reflect.Field;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.miyanaqy.base.annotation.Column;
@@ -8,14 +18,6 @@ import com.miyanaqy.base.annotation.IgnoreNull;
 import com.miyanaqy.base.annotation.Table;
 import com.miyanaqy.base.constant.DateConstant;
 import com.miyanaqy.common.utils.DateUtils;
-
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-
-import java.io.Serializable;
-import java.lang.reflect.Field;
-import java.sql.Timestamp;
-import java.util.*;
 
 
 /**
