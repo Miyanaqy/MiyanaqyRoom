@@ -52,7 +52,7 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/findUserInfo", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public Map<String, Object> findUserInfo() {
     	logger.info(" /user/user/findUserInfo");
-        UserBean result = null; // 调用发送回调信息的接口
+        UserBean result = (UserBean) getSession().getAttribute("login_user");; // 调用发送回调信息的接口
         if (result != null) {
             return returnResultMap(ResultMapInfo.GETSUCCESS, result);// 发送成功
         } else {

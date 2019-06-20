@@ -13,7 +13,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import com.miyanaqy.common.utils.RedisUtil;
 
-@Configuration
+//@Configuration
 public class RedisConfig {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
