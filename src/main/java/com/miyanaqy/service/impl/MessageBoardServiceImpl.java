@@ -3,39 +3,39 @@ package com.miyanaqy.service.impl;
 import org.springframework.stereotype.Service;
 
 import com.miyanaqy.bean.bo.Page;
-import com.miyanaqy.bean.entity.ArticleBean;
+import com.miyanaqy.bean.entity.MessageBoardBean;
 import com.miyanaqy.bean.vo.QueryBean;
-import com.miyanaqy.service.IArticleService;
+import com.miyanaqy.service.IMessageBoardService;
 
 @Service
-public class ArticleServiceImpl extends BaseServiceImpl implements IArticleService {
+public class MessageBoardServiceImpl extends BaseServiceImpl implements IMessageBoardService {
 
 	@Override
-	public int add(ArticleBean bean) {
+	public int add(MessageBoardBean bean) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int edit(ArticleBean bean) {
+	public int edit(MessageBoardBean bean) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int deleteById(Long articleId) {
+	public int deleteById(Long messageBoardId) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public ArticleBean findById(Long articleId) {
+	public MessageBoardBean findById(Long messageBoardId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Page<ArticleBean> findByPage(QueryBean query) {
+	public Page<MessageBoardBean> findByPage(QueryBean query) {
 		// TODO Auto-generated method stub
 		return null;
 	}

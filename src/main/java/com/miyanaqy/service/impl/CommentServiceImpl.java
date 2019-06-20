@@ -1,10 +1,13 @@
 package com.miyanaqy.service.impl;
 
+import org.springframework.stereotype.Service;
+
 import com.miyanaqy.bean.bo.Page;
 import com.miyanaqy.bean.entity.CommentBean;
 import com.miyanaqy.bean.vo.QueryBean;
 import com.miyanaqy.service.ICommentService;
 
+@Service
 public class CommentServiceImpl extends BaseServiceImpl implements ICommentService {
 
 	@Override
