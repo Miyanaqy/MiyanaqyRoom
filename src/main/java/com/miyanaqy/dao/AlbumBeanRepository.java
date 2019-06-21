@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.miyanaqy.bean.entity.AlbumBean;
 import com.miyanaqy.bean.vo.QueryBean;
 
-public interface AlbumBeanDao extends PagingAndSortingRepository<AlbumBean, Long>, JpaSpecificationExecutor<AlbumBean>{
+public interface AlbumBeanRepository extends PagingAndSortingRepository<AlbumBean, Long>, JpaSpecificationExecutor<AlbumBean>{
 
 //	@Query("update AdminInfo set loginErrorCount = (loginErrorCount - 1) where loginErrorCount > 0 and deleteFlag = 0")
 //	int getBeanListByCount(QueryBean query);
