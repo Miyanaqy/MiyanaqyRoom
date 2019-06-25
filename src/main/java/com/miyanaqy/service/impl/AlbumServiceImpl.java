@@ -61,7 +61,7 @@ public class AlbumServiceImpl extends BaseServiceImpl implements IAlbumService {
 	public AlbumBean findById(Long albumId) {
 		return albumReposiry.findById(albumId).orElse(null);
 	}
-
+	
 	@Override
 	public Page<AlbumBean> findByPage(QueryBean queryBean) {
 		Pageable page = PageRequest.of(queryBean.getPageIndex(),queryBean.getPageSize());

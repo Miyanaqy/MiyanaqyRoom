@@ -1,6 +1,7 @@
 package com.miyanaqy.service;
 
-import com.miyanaqy.bean.bo.Page;
+import org.springframework.data.domain.Page;
+
 import com.miyanaqy.bean.entity.PhotoBean;
 import com.miyanaqy.bean.vo.QueryBean;
 
