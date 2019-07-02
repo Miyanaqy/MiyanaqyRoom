@@ -25,7 +25,7 @@ public class MessageBoardAdminController extends BaseController {
 	@Autowired
     private IMessageBoardService messageBoardService;
 
-    @RequestMapping(value = "/delete", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/delete", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> delete(Long id) {
     	logger.info(" /admin/messageBoard/delete---:" + id);
         int result = messageBoardService.deleteById(id); // 调用发送回调信息的接口
@@ -36,7 +36,7 @@ public class MessageBoardAdminController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/findById", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/findById", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> findById(Long id) {
     	logger.info(" /admin/messageBoard/findById---:" + id);
         MessageBoardBean result = messageBoardService.findById(id); // 调用发送回调信息的接口
@@ -47,7 +47,7 @@ public class MessageBoardAdminController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/findByPage", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/findByPage", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> findByPage(QueryBean query) {
     	logger.info(" /admin/messageBoard/findByPage");
         Page<MessageBoardBean> result = messageBoardService.findByPage(query); // 调用发送回调信息的接口

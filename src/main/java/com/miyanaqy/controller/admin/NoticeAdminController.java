@@ -27,7 +27,7 @@ public class NoticeAdminController extends BaseController {
 	@Autowired
     private INoticeService noticeService;
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/add", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> add(@RequestBody NoticeBean bean) {
     	Gson gson = new Gson();
     	logger.info(" /admin/notice/add---:" + gson.toJson(bean));
@@ -39,7 +39,7 @@ public class NoticeAdminController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/edit", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/edit", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> edit(@RequestBody NoticeBean bean) {
     	Gson gson = new Gson();
     	logger.info(" /admin/notice/edit---:" + gson.toJson(bean));
@@ -51,7 +51,7 @@ public class NoticeAdminController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/delete", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/delete", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> delete(Long id) {
     	logger.info(" /admin/notice/delete---:" + id);
         int result = noticeService.deleteById(id); // 调用发送回调信息的接口
@@ -62,25 +62,25 @@ public class NoticeAdminController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/findById", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/findById", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> findById(Long id) {
     	logger.info(" /admin/notice/findById---:" + id);
         NoticeBean result = noticeService.findById(id); // 调用发送回调信息的接口
         if (result != null) {
-            return returnResultMap(ResultMapInfo.DELETESUCCESS, result);// 发送成功
+            return returnResultMap(ResultMapInfo.GETSUCCESS, result);// 发送成功
         } else {
-            return returnResultMap(ResultMapInfo.DELETEFAIL); // 发送失败
+            return returnResultMap(ResultMapInfo.GETFAIL); // 发送失败
         }
     }
     
-    @RequestMapping(value = "/findByPage", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/findByPage", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> findByPage(QueryBean query) {
     	logger.info(" /admin/notice/findByPage");
         Page<NoticeBean> result = noticeService.findByPage(query); // 调用发送回调信息的接口
         if (result != null) {
-            return returnResultMap(ResultMapInfo.DELETESUCCESS, result);// 发送成功
+            return returnResultMap(ResultMapInfo.GETSUCCESS, result);// 发送成功
         } else {
-            return returnResultMap(ResultMapInfo.DELETEFAIL); // 发送失败
+            return returnResultMap(ResultMapInfo.GETFAIL); // 发送失败
         }
     }
 

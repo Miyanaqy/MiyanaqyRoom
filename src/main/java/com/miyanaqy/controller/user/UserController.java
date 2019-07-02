@@ -17,27 +17,29 @@ import com.miyanaqy.controller.BaseController;
 import com.miyanaqy.service.IUserService;
 
 @RestController
-@RequestMapping(value = "/user/user")
+@RequestMapping(value = "/user/userinfo")
 public class UserController extends BaseController {
 	
 	private static Logger logger = LoggerFactory.getLogger(UserController.class);
     
     @Autowired
     private IUserService userService;
-
-    @RequestMapping(value = "/regist", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+  
+    @RequestMapping(value = "/regist", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> regist(@RequestBody UserBean bean) {
     	Gson gson = new Gson();
     	logger.info(" /user/user/regist---:" + gson.toJson(bean));
-        int result = userService.regist(bean); // 调用发送回调信息的接口
-        if (result == 1) {
-            return returnResultMap(ResultMapInfo.ADDSUCCESS);// 发送成功
+        UserBean result = userService.regist(bean); // 调用发送回调信息的接口
+        if (result != null) {
+        	result.setPassword("******");
+        	getSession().setAttribute("result", result);
+            return returnResultMap(ResultMapInfo.LOGINIPSUCCESS, result);// 发送成功
         } else {
-            return returnResultMap(ResultMapInfo.ADDFAIL); // 发送失败
+            return returnResultMap(ResultMapInfo.LOGINIPFAIL); // 发送失败
         }
     }
     
-    @RequestMapping(value = "/edit", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/edit", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> edit(@RequestBody UserBean bean) {
     	Gson gson = new Gson();
     	logger.info(" /user/user/edit---:" + gson.toJson(bean));
@@ -49,7 +51,7 @@ public class UserController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/findUserInfo", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/findUserInfo", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> findUserInfo() {
     	logger.info(" /user/user/findUserInfo");
         UserBean result = (UserBean) getSession().getAttribute("login_user");; // 调用发送回调信息的接口

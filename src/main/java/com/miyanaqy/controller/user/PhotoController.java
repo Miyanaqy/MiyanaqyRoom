@@ -27,7 +27,7 @@ public class PhotoController extends BaseController {
     @Autowired
     private IPhotoService photoService;
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/add", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> add(@RequestBody PhotoBean bean) {
     	Gson gson = new Gson();
     	logger.info(" /user/photo/add---:" + gson.toJson(bean));
@@ -39,7 +39,7 @@ public class PhotoController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/edit", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/edit", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> edit(@RequestBody PhotoBean bean) {
     	Gson gson = new Gson();
     	logger.info(" /user/photo/edit---:" + gson.toJson(bean));
@@ -51,7 +51,7 @@ public class PhotoController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/delete", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/delete", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> delete(Long id) {
     	logger.info(" /user/photo/delete---:" + id);
         int result = photoService.deleteById(id); // 调用发送回调信息的接口
@@ -62,7 +62,7 @@ public class PhotoController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/findById", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/findById", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> findById(Long id) {
     	logger.info(" /user/photo/findById---:" + id);
         PhotoBean result = photoService.findById(id); // 调用发送回调信息的接口
@@ -73,7 +73,7 @@ public class PhotoController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/findByPage", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/findByPage", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> findByPage(QueryBean query) {
     	logger.info(" /user/photo/findByPage");
         Page<PhotoBean> result = photoService.findByPage(query); // 调用发送回调信息的接口

@@ -27,7 +27,7 @@ public class AlbumController extends BaseController {
     @Autowired
     private IAlbumService albumService;
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/add", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> add(@RequestBody AlbumBean bean) {
     	Gson gson = new Gson();
     	logger.info(" /user/album/add---:" + gson.toJson(bean));
@@ -39,7 +39,7 @@ public class AlbumController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/edit", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/edit", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> edit(@RequestBody AlbumBean bean) {
     	Gson gson = new Gson();
     	logger.info(" /user/album/edit---:" + gson.toJson(bean));
@@ -51,7 +51,7 @@ public class AlbumController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/delete", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/delete", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> delete(Long id) {
     	logger.info(" /user/album/delete---:" + id);
         int result = albumService.deleteById(id); // 调用发送回调信息的接口
@@ -62,7 +62,7 @@ public class AlbumController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/findById", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/findById", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> findById(Long id) {
     	logger.info(" /user/album/findById---:" + id);
         AlbumBean result = albumService.findById(id); // 调用发送回调信息的接口
@@ -73,7 +73,7 @@ public class AlbumController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/findByPage", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/findByPage", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> findByPage(QueryBean query) {
     	logger.info(" /user/album/findByPage");
         Page<AlbumBean> result = albumService.findByPage(query); // 调用发送回调信息的接口

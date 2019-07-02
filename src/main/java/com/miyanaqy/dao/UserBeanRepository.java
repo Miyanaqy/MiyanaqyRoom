@@ -7,4 +7,6 @@ import com.miyanaqy.bean.entity.UserBean;
 
 public interface UserBeanRepository extends PagingAndSortingRepository<UserBean, Long>, JpaSpecificationExecutor<UserBean> {
 
+	UserBean findByLoginNumberAndPassword(String loginNumber, String password);
+
 }

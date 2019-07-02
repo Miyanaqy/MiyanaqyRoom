@@ -7,7 +7,7 @@ import com.miyanaqy.bean.vo.QueryBean;
 
 public interface IUserService {
 
-	int regist(UserBean bean);
+	UserBean regist(UserBean bean);
 
 	int edit(UserBean bean);
 

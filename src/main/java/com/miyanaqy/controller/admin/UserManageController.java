@@ -28,7 +28,7 @@ public class UserManageController extends BaseController {
     @Autowired
     private IUserService userService;
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/add", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> add(@RequestBody UserBean bean) {
     	Gson gson = new Gson();
     	logger.info(" /admin/userManage/add---:" + gson.toJson(bean));
@@ -40,7 +40,7 @@ public class UserManageController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/edit", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/edit", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> edit(@RequestBody UserBean bean) {
     	Gson gson = new Gson();
     	logger.info(" /admin/userManage/edit---:" + gson.toJson(bean));
@@ -52,7 +52,7 @@ public class UserManageController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/delete", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/delete", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> delete(Long id) {
     	logger.info(" /admin/userManage/delete---:" + id);
         int result = userService.deleteById(id); // 调用发送回调信息的接口
@@ -63,7 +63,7 @@ public class UserManageController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/findById", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/findById", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> findById(Long id) {
     	logger.info(" /admin/userManage/findById---:" + id);
         UserBean result = userService.findById(id); // 调用发送回调信息的接口
@@ -74,7 +74,7 @@ public class UserManageController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/findByPage", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/findByPage", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> findByPage(QueryBean query) {
     	logger.info(" /admin/userManage/findByPage");
         Page<UserBean> result = userService.findByPage(query); // 调用发送回调信息的接口

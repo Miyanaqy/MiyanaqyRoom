@@ -27,7 +27,7 @@ public class PhotoAdminController extends BaseController {
 	@Autowired
     private IPhotoService photoService;
 
-    @RequestMapping(value = "/edit", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/edit", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> edit(@RequestBody PhotoBean bean) {
     	Gson gson = new Gson();
     	logger.info(" /admin/photo/edit---:" + gson.toJson(bean));
@@ -39,7 +39,7 @@ public class PhotoAdminController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/delete", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/delete", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> delete(Long id) {
     	logger.info(" /admin/photo/delete---:" + id);
         int result = photoService.deleteById(id); // 调用发送回调信息的接口
@@ -50,7 +50,7 @@ public class PhotoAdminController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/findById", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/findById", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> findById(Long id) {
     	logger.info(" /admin/photo/findById---:" + id);
         PhotoBean result = photoService.findById(id); // 调用发送回调信息的接口
@@ -61,7 +61,7 @@ public class PhotoAdminController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/findByPage", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/findByPage", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> findByPage(QueryBean query) {
     	logger.info(" /admin/photo/findByPage");
         Page<PhotoBean> result = photoService.findByPage(query); // 调用发送回调信息的接口

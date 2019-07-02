@@ -27,7 +27,7 @@ public class SystemInformationAdminController extends BaseController {
     @Autowired
     private ISystemInformationService systemInformationService;
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/add", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> add(@RequestBody SystemInformationBean bean) {
     	Gson gson = new Gson();
     	logger.info(" /admin/systemInformation/add---:" + gson.toJson(bean));
@@ -39,7 +39,7 @@ public class SystemInformationAdminController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/edit", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/edit", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> edit(@RequestBody SystemInformationBean bean) {
     	Gson gson = new Gson();
     	logger.info(" /admin/systemInformation/edit---:" + gson.toJson(bean));
@@ -51,7 +51,7 @@ public class SystemInformationAdminController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/delete", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/delete", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> delete(Long id) {
     	logger.info(" /admin/systemInformation/delete---:" + id);
         int result = systemInformationService.deleteById(id); // 调用发送回调信息的接口
@@ -62,7 +62,7 @@ public class SystemInformationAdminController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/findById", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/findById", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> findById(Long id) {
     	logger.info(" /admin/systemInformation/findById---:" + id);
         SystemInformationBean result = systemInformationService.findById(id); // 调用发送回调信息的接口
@@ -73,7 +73,7 @@ public class SystemInformationAdminController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/findByPage", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/findByPage", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> findByPage(QueryBean query) {
     	logger.info(" /admin/systemInformation/findByPage");
         Page<SystemInformationBean> result = systemInformationService.findByPage(query); // 调用发送回调信息的接口

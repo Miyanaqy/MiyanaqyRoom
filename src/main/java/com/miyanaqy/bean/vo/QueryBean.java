@@ -26,6 +26,8 @@ public class QueryBean {
 	//@ApiModelProperty(value = "状态")
 	private Integer type;
 	
+	private String title;
+	
 	private Long userId;
 	
 	public Integer getPageIndex() {

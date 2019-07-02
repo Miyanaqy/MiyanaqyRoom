@@ -28,7 +28,7 @@ public class ArticleAdminController  extends BaseController {
     @Autowired
     private IArticleService articleService;
     
-    @RequestMapping(value = "/edit", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/edit", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> edit(@RequestBody ArticleBean bean) {
     	Gson gson = new Gson();
     	logger.info(" /admin/article/edit---:" + gson.toJson(bean));
@@ -40,7 +40,7 @@ public class ArticleAdminController  extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/delete", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/delete", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> delete(Long id) {
     	logger.info(" /admin/article/delete---:" + id);
         int result = articleService.deleteById(id); // 调用发送回调信息的接口
@@ -51,7 +51,7 @@ public class ArticleAdminController  extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/findById", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/findById", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> findById(Long id) {
     	logger.info(" /admin/article/findById---:" + id);
         ArticleBean result = articleService.findById(id); // 调用发送回调信息的接口
@@ -62,7 +62,7 @@ public class ArticleAdminController  extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/findByPage", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/findByPage", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> findByPage(QueryBean query) {
     	logger.info(" /admin/article/findByPage");
         Page<ArticleBean> result = articleService.findByPage(query); // 调用发送回调信息的接口

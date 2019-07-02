@@ -11,13 +11,14 @@ public enum ResultMapInfo {
     EDITFAIL(2, "编辑失败"),
     DELETESUCCESS(1, "删除成功"),
     DELETEFAIL(2, "删除失败"),
-    LONGINIPSUCCESS(1,"登入IP认证成功"),
-    LONGINIPFAIL(2,"登入IP认证失败"),
+    LOGINIPSUCCESS(1,"登入IP认证成功"),
+    LOGINIPFAIL(2,"登入IP认证失败"),
     LOGININFOERRO(2,"用户名或密码错误"),
     ERROCODE(2,"验证码错误"),
     REPEATADDITION(2,"重复添加"),
     EXAMINEERROR(2, "审核状态异常"),
     SIGNERROR(2, "签名错误"),
+    RELOGIN(9, "请重新登录"),
     EXTRACTIONSUBSTITUTENOTENOUGH(2, "远程异常");
 
 

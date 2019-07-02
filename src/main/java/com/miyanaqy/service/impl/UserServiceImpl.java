@@ -18,9 +18,8 @@ public class UserServiceImpl extends BaseServiceImpl implements IUserService {
 	private UserBeanRepository userReposiry;
 
 	@Override
-	public int regist(UserBean bean) {
-		// TODO Auto-generated method stub
-		return 0;
+	public UserBean regist(UserBean user) {
+		return userReposiry.findByLoginNumberAndPassword(user.getLoginNumber(), user.getPassword());
 	}
 	
 	@Override

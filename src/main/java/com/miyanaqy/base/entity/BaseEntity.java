@@ -25,17 +25,17 @@ import lombok.Data;
 @Data
 public class BaseEntity {
 	
-	protected Long id;
-	
-	protected int state;
-	
-	protected int type;
-	
-	protected Integer deleteFlag = 0;//删除标记，0，不删，1已删
-
-    protected Date createTime;//创建时间
-
-    protected Date updateTime;//更新时间
+//	protected Long id;
+//	
+//	protected int state;
+//	
+//	protected int type;
+//	
+//	protected Integer deleteFlag = 0;//删除标记，0，不删，1已删
+//
+//    protected Date createTime;//创建时间
+//
+//    protected Date updateTime;//更新时间
 	 
 //	protected Long id;
 //

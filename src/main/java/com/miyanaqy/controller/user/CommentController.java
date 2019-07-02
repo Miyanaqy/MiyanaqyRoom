@@ -27,7 +27,7 @@ public class CommentController extends BaseController {
 	@Autowired
     private ICommentService commentService;
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/add", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> add(@RequestBody CommentBean bean) {
     	Gson gson = new Gson();
     	logger.info(" /user/comment/add---:" + gson.toJson(bean));
@@ -39,7 +39,7 @@ public class CommentController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/edit", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/edit", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> edit(@RequestBody CommentBean bean) {
     	Gson gson = new Gson();
     	logger.info(" /user/comment/edit---:" + gson.toJson(bean));
@@ -51,7 +51,7 @@ public class CommentController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/delete", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/delete", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> delete(Long id) {
     	logger.info(" /user/comment/delete---:" + id);
         int result = commentService.deleteById(id); // 调用发送回调信息的接口
@@ -62,7 +62,7 @@ public class CommentController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/findById", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/findById", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> findById(Long id) {
     	logger.info(" /user/comment/findById---:" + id);
         CommentBean result = commentService.findById(id); // 调用发送回调信息的接口
@@ -73,7 +73,7 @@ public class CommentController extends BaseController {
         }
     }
     
-    @RequestMapping(value = "/findByPage", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/findByPage", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> findByPage(QueryBean query) {
     	logger.info(" /user/comment/findByPage");
         Page<CommentBean> result = commentService.findByPage(query); // 调用发送回调信息的接口
