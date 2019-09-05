@@ -55,9 +55,9 @@ public class PhotoAdminController extends BaseController {
     	logger.info(" /admin/photo/findById---:" + id);
         PhotoBean result = photoService.findById(id); // 调用发送回调信息的接口
         if (result != null) {
-            return returnResultMap(ResultMapInfo.DELETESUCCESS, result);// 发送成功
+            return returnResultMap(ResultMapInfo.GETSUCCESS, result);// 发送成功
         } else {
-            return returnResultMap(ResultMapInfo.DELETEFAIL); // 发送失败
+            return returnResultMap(ResultMapInfo.GETFAIL); // 发送失败
         }
     }
     
@@ -66,9 +66,9 @@ public class PhotoAdminController extends BaseController {
     	logger.info(" /admin/photo/findByPage");
         Page<PhotoBean> result = photoService.findByPage(query); // 调用发送回调信息的接口
         if (result != null) {
-            return returnResultMap(ResultMapInfo.DELETESUCCESS, result);// 发送成功
+            return returnResultMap(ResultMapInfo.GETSUCCESS, result);// 发送成功
         } else {
-            return returnResultMap(ResultMapInfo.DELETEFAIL); // 发送失败
+            return returnResultMap(ResultMapInfo.GETFAIL); // 发送失败
         }
     }
 }

@@ -67,9 +67,9 @@ public class MusicAdminController extends BaseController {
     	logger.info(" /admin/music/findById---:" + id);
         MusicBean result = musicService.findById(id); // 调用发送回调信息的接口
         if (result != null) {
-            return returnResultMap(ResultMapInfo.DELETESUCCESS, result);// 发送成功
+            return returnResultMap(ResultMapInfo.GETSUCCESS, result);// 发送成功
         } else {
-            return returnResultMap(ResultMapInfo.DELETEFAIL); // 发送失败
+            return returnResultMap(ResultMapInfo.GETFAIL); // 发送失败
         }
     }
     
@@ -78,9 +78,9 @@ public class MusicAdminController extends BaseController {
     	logger.info(" /admin/music/findByPage");
         Page<MusicBean> result = musicService.findByPage(query); // 调用发送回调信息的接口
         if (result != null) {
-            return returnResultMap(ResultMapInfo.DELETESUCCESS, result);// 发送成功
+            return returnResultMap(ResultMapInfo.GETSUCCESS, result);// 发送成功
         } else {
-            return returnResultMap(ResultMapInfo.DELETEFAIL); // 发送失败
+            return returnResultMap(ResultMapInfo.GETFAIL); // 发送失败
         }
     }
 
