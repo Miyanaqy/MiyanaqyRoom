@@ -2,26 +2,24 @@ package com.miyanaqy.controller;
 
 
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
-import com.miyanaqy.bean.enums.ResultMapInfo;
-import com.miyanaqy.service.IBaseService;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import com.miyanaqy.bean.enums.ResultMapInfo;
 
 public class BaseController {
 	
 	protected Map<String, Object> resultMap = new HashMap<String, Object>();
 	
-	@Autowired
-	private IBaseService baseService;
+//	@Autowired
+//	private IBaseService baseService;
 	
 	public static HttpSession getSession() {
 		return getRequest().getSession();

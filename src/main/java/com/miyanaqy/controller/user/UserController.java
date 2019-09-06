@@ -2,8 +2,6 @@ package com.miyanaqy.controller.user;
 
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,19 +14,20 @@ import com.miyanaqy.bean.enums.ResultMapInfo;
 import com.miyanaqy.controller.BaseController;
 import com.miyanaqy.service.IUserService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping(value = "/user/userinfo")
 public class UserController extends BaseController {
 	
-	private static Logger logger = LoggerFactory.getLogger(UserController.class);
-    
     @Autowired
     private IUserService userService;
   
     @RequestMapping(value = "/regist", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> regist(@RequestBody UserBean bean) {
     	Gson gson = new Gson();
-    	logger.info(" /user/user/regist---:" + gson.toJson(bean));
+    	log.info(" /user/user/regist---:" + gson.toJson(bean));
         UserBean result = userService.regist(bean); // 调用发送回调信息的接口
         if (result != null) {
         	result.setPassword("******");
@@ -42,7 +41,7 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/edit", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> edit(@RequestBody UserBean bean) {
     	Gson gson = new Gson();
-    	logger.info(" /user/user/edit---:" + gson.toJson(bean));
+    	log.info(" /user/user/edit---:" + gson.toJson(bean));
         int result = userService.edit(bean); // 调用发送回调信息的接口
         if (result == 1) {
             return returnResultMap(ResultMapInfo.EDITSUCCESS);// 发送成功
@@ -53,7 +52,7 @@ public class UserController extends BaseController {
     
     @RequestMapping(value = "/findUserInfo", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public Map<String, Object> findUserInfo() {
-    	logger.info(" /user/user/findUserInfo");
+    	log.info(" /user/user/findUserInfo");
         UserBean result = (UserBean) getSession().getAttribute("login_user");; // 调用发送回调信息的接口
         if (result != null) {
             return returnResultMap(ResultMapInfo.GETSUCCESS, result);// 发送成功

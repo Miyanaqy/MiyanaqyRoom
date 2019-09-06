@@ -29,7 +29,7 @@ public class UserFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
     	HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-        System.out.println("***********UserFilter被使用***********");
+//        System.out.println("***********UserFilter被使用***********");
 //        UserBean user = (UserBean) request.getSession().getAttribute("loginUser");
 //        if (user == null) {
 //        	Gson gson = new Gson();
